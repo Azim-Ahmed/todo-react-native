@@ -14,10 +14,18 @@ export default function App() {
     >
       <View style={styles.textContainer}>
         <TextInput onChangeText={(text) => setInputData(text)} placeholder="Write your Item to some data" style={styles.TextInputData} />
-        <Button style={styles.inputButton} title="add more Item" onPress={() => setAddData([...addData, inputData])}>Add</Button>
+        <Button
+          style={styles.inputButton}
+          title="add more Item"
+          onPress={() => setAddData(
+            [...addData,
+            {
+              key: Math.random().toString(),
+              value: inputData
+            }])}>Add</Button>
       </View>
 
-      <FlatList data={addData} renderItem={() => <TextSHower key={i} placeName={item} onItemPressed={() => alert(item)} />} />
+      <FlatList data={addData} renderItem={info => <TextSHower placeName={info.item.value} onItemPressed={() => alert(info.item.value)} />} />
       {/* <TextGrabber /> */}
     </View>
   );
