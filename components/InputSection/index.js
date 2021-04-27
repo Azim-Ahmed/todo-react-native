@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, StyleSheet, TextInput, View } from 'react-native';
-import CodeImage from '../../assets/Images/121138033.jpg'
+// import CodeImage from '../../assets/Images/121138033.jpg'
 
 const InputSection = (props) => {
     return (
@@ -14,13 +14,20 @@ const InputSection = (props) => {
             <Button
                 style={styles.inputButton}
                 title="add more Item"
-                onPress={() => props.setAddData(
-                    [...props.addData,
-                    {
-                        key: Math.random().toString(),
-                        value: props.inputData,
-                        img: CodeImage
-                    }])}>Add</Button>
+                onPress={() => {
+                    if (props.inputData !== "") {
+                        props.setAddData(
+                            [...props.addData,
+                            {
+                                key: Math.random().toString(),
+                                value: props.inputData,
+                                img: {
+                                    uri: 'https://w7.pngwing.com/pngs/625/18/png-transparent-brown-wooden-bedroom-furniture-set-art-bedside-tables-metal-furniture-couch-furniture-angle-furniture-drawer.png'
+                                }
+                            }]);
+                        props.setInputData("")
+                    }
+                }}>Add</Button>
         </View>
     )
 }

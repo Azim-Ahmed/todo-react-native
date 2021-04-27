@@ -15,7 +15,7 @@ const TextSHower = ({ placeName, onItemPressed, image }) => {
 
             }} >
                 <Image source={image} style={{ height: 50, width: 50 }} />
-                <Text >{placeName}</Text>
+                <Text style={{ paddingLeft: 10, fontSize: 20 }}>{placeName}</Text>
 
             </View>
         </TouchableOpacity>

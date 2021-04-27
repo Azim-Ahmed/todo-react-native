@@ -13,10 +13,21 @@ export default function App() {
     const data = addData.find(data => data.key == key)
     setSelectedModal(data)
   }
+  const handleDeleteItem = key => {
+    setAddData(addData.filter(data => data.key !== key))
+    setSelectedModal(null)
+  }
+  const handleHideModal = () => {
+    setSelectedModal(null)
+  }
 
   let dataDetails = null;
   if (selectedModal !== null) {
-    dataDetails = <PlaceModal place={selectedModal} />
+    dataDetails = <PlaceModal
+      place={selectedModal}
+      handleDeleteItem={handleDeleteItem}
+      handleHideModal={handleHideModal}
+    />
   }
   return (
     <View
@@ -40,6 +51,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    width: '100%',
     paddingTop: 25,
     paddingBottom: 10,
     paddingLeft: 10,

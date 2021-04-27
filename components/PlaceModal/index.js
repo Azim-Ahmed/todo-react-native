@@ -6,12 +6,13 @@ const PlaceModal = (props) => {
     return (
         <Modal>
 
-            <View>
-                <Text>{props.place.value}</Text>
+            <View style={{ width: "100%" }} >
+
                 <Image source={props.place.img} style={{ width: "100%", height: 300 }} />
+                <Text style={{ fontSize: 40, textAlign: 'center' }}>{props.place.value}</Text>
                 <View>
-                    <Button title="delete" />
-                    {/* <Button title="close" onPress={() => props.handleHideModal()} /> */}
+                    <Button color='red' onPress={() => props.handleDeleteItem(props.place.key)} title="delete" />
+                    <Button title="close" onPress={() => props.handleHideModal()} />
                 </View>
 
             </View>
