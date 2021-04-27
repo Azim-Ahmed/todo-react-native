@@ -1,11 +1,22 @@
 import React from 'react'
-import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 
-const TextSHower = ({ placeName, onItemPressed, }) => {
+const TextSHower = ({ placeName, onItemPressed, image }) => {
     return (
         <TouchableOpacity onLongPress={onItemPressed}>
-            <View style={{ height: 40, padding: 20, color: 'white', marginLeft: 20, backgroundColor: 'cyan', marginBottom: 20 }} >
+            <View style={{
+                padding: 20,
+                color: 'white',
+                marginLeft: 20,
+                width: "100%",
+                backgroundColor: '#fee',
+                marginBottom: 20,
+                flexDirection: "row"
+
+            }} >
+                <Image source={image} style={{ height: 50, width: 50 }} />
                 <Text >{placeName}</Text>
+
             </View>
         </TouchableOpacity>
     )

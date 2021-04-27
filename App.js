@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, TextInput, View, Text, FlatList, ScrollView } from 'react-native';
-import TextGrabber from './components/TextGrabber';
-import TextSHower from './components/TextSHower';
+import { StyleSheet, View } from 'react-native';
+import FlatListSection from './components/FlatListSection';
+import InputSection from './components/InputSection';
+import PlaceModal from './components/PlaceModal';
 
 export default function App() {
   const [inputData, setInputData] = useState('')
   const [addData, setAddData] = useState([])
-  const ItemList = addData.map((item, i) => <TextSHower key={i} placeName={item} onItemPressed={() => alert(item)} />)
+  const [selectedModal, setSelectedModal] = useState(null)
 
+  const handleSelectedModal = key => {
+    const data = addData.find(data => data.key == key)
+    setSelectedModal(data)
+  }
+
+  let dataDetails = null;
+  if (selectedModal !== null) {
+    dataDetails = <PlaceModal place={selectedModal} />
+  }
   return (
     <View
       style={styles.mainContainer}
     >
-      <View style={styles.textContainer}>
-        <TextInput onChangeText={(text) => setInputData(text)} placeholder="Write your Item to some data" style={styles.TextInputData} />
-        <Button
-          style={styles.inputButton}
-          title="add more Item"
-          onPress={() => setAddData(
-            [...addData,
-            {
-              key: Math.random().toString(),
-              value: inputData
-            }])}>Add</Button>
-      </View>
-
-      <FlatList data={addData} renderItem={info => <TextSHower placeName={info.item.value} onItemPressed={() => alert(info.item.value)} />} />
+      {dataDetails}
+      <InputSection
+        inputData={inputData}
+        setInputData={setInputData}
+        addData={addData}
+        setAddData={setAddData}
+      />
+      <FlatListSection
+        addData={addData}
+        handleSelectedModal={handleSelectedModal}
+      />
       {/* <TextGrabber /> */}
     </View>
   );
@@ -38,24 +45,4 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputButton: {
-    color: "black",
-    backgroundColor: "cyan"
-  },
-  textContainer: {
-    display: 'flex',
-    flexDirection: "row"
-  },
-  TextInputData: {
-    backgroundColor: "transparent",
-    width: "60%",
-    borderWidth: 1,
-    paddingStart: 5
-  }
 });
