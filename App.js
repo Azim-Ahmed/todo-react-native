@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, TextInput, View, Text, SectionList } from 'react-native';
+import { Button, StyleSheet, TextInput, View, Text, FlatList, ScrollView } from 'react-native';
 import TextGrabber from './components/TextGrabber';
 import TextSHower from './components/TextSHower';
 
@@ -17,8 +17,8 @@ export default function App() {
         <Button style={styles.inputButton} title="add more Item" onPress={() => setAddData([...addData, inputData])}>Add</Button>
       </View>
 
-      <View>{ItemList}</View>
-      <TextGrabber />
+      <FlatList data={addData} renderItem={() => <TextSHower key={i} placeName={item} onItemPressed={() => alert(item)} />} />
+      {/* <TextGrabber /> */}
     </View>
   );
 }
