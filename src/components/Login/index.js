@@ -7,7 +7,16 @@ const Login = (props) => {
             <Text>
                 Login Screen
             </Text>
-            <Button title="go to Nav" onPress={() => props.navigation.navigate('Home')} />
+            <View style={{ marginTop: 20 }}>
+                <Button title="go to Nav" onPress={() => props.navigation.navigate('Home')} />
+            </View>
+
+            <View style={{ marginTop: 20 }}>
+                <Button
+                    title="go to Hotel Todo"
+                    onPress={() => props.navigation.navigate('Hotel')}
+                />
+            </View>
         </View>
     )
 }

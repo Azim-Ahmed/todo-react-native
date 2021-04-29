@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Modal, Image, Button, TouchableOpacity } from 'react-native'
+import { View, Text, Modal, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const PlaceModal = (props) => {
