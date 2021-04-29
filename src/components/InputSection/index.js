@@ -17,14 +17,14 @@ const InputSection = (props) => {
                 onPress={() => {
                     if (props.inputData !== "") {
                         props.setAddData(
-                            [...props.addData,
-                            {
-                                key: Math.random().toString(),
-                                value: props.inputData,
-                                img: {
-                                    uri: 'https://w7.pngwing.com/pngs/625/18/png-transparent-brown-wooden-bedroom-furniture-set-art-bedside-tables-metal-furniture-couch-furniture-angle-furniture-drawer.png'
-                                }
-                            }]);
+                            [
+                                {
+                                    key: Math.random().toString(),
+                                    value: props.inputData,
+                                    img: {
+                                        uri: 'https://w7.pngwing.com/pngs/625/18/png-transparent-brown-wooden-bedroom-furniture-set-art-bedside-tables-metal-furniture-couch-furniture-angle-furniture-drawer.png'
+                                    }
+                                }]);
                         props.setInputData("")
                     }
                 }}>Add</Button>

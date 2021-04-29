@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import { setAddData } from '../redux/actionCreator';
+import { setAddData, deletePlaceData } from '../redux/actionCreator';
 import FlatListSection from '../components/FlatListSection';
 import InputSection from '../components/InputSection';
 import PlaceModal from '../components/PlaceModal';
@@ -13,10 +13,10 @@ const mapStateToProps = state => {
     }
 }
 
-
 const mapDispatchToProps = dispatch => {
     return {
-        addData: data => dispatch(setAddData(data))
+        setAddData: data => dispatch(setAddData(data)),
+        deletePlaceData: key => dispatch(deletePlaceData(key))
     }
 }
 const MainComponent = (props) => {
@@ -29,7 +29,8 @@ const MainComponent = (props) => {
         setSelectedModal(data)
     }
     const handleDeleteItem = key => {
-        setAddData(props.addData.filter(data => data.key !== key))
+        // setAddData(props.addData.filter(data => data.key !== key))
+        props.deletePlaceData(key)
         setSelectedModal(null)
     }
     const handleHideModal = () => {

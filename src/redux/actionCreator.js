@@ -6,3 +6,9 @@ export const setAddData = (data) => {
         payload: data
     }
 }
+export const deletePlaceData = key => {
+    return {
+        type: actionTypes.deletePlace,
+        payload: key
+    }
+}
