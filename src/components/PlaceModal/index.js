@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, Modal, Image, Button } from 'react-native'
+import { View, Text, Modal, Image, Button, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const PlaceModal = (props) => {
     console.log(props);
@@ -10,9 +11,15 @@ const PlaceModal = (props) => {
 
                 <Image source={props.place.img} style={{ width: "100%", height: 300 }} />
                 <Text style={{ fontSize: 40, textAlign: 'center' }}>{props.place.value}</Text>
-                <View>
-                    <Button color='red' onPress={() => props.handleDeleteItem(props.place.key)} title="delete" />
-                    <Button title="close" onPress={() => props.handleHideModal()} />
+                <View style={{ alignItems: "center" }}>
+                    <TouchableOpacity
+                        onPress={() => props.handleDeleteItem(props.place.key)}>
+                        <Icon name="trash" size={30} color="red" />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => props.handleHideModal()}>
+                        <Icon name="times-circle" size={30} />
+                    </TouchableOpacity>
                 </View>
 
             </View>
