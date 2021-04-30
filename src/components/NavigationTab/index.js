@@ -23,7 +23,7 @@ const NavigationTab = (props) => {
                 component={SharePlaces}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icons name="ios-share-alt" color={color} size={size} />
+                        <Icons name="share-social" color={color} size={size} />
                     )
                 }}
             />
