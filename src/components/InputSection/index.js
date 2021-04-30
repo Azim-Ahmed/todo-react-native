@@ -11,23 +11,7 @@ const InputSection = (props) => {
                 placeholder="Write your Item to some data"
                 style={styles.TextInputData}
             />
-            <Button
-                style={styles.inputButton}
-                title="add more Item"
-                onPress={() => {
-                    if (props.inputData !== "") {
-                        props.setAddData(
-                            [
-                                {
-                                    key: Math.random().toString(),
-                                    value: props.inputData,
-                                    img: {
-                                        uri: 'https://w7.pngwing.com/pngs/625/18/png-transparent-brown-wooden-bedroom-furniture-set-art-bedside-tables-metal-furniture-couch-furniture-angle-furniture-drawer.png'
-                                    }
-                                }]);
-                        props.setInputData("")
-                    }
-                }}>Add</Button>
+
         </View>
     )
 }
@@ -39,7 +23,8 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         display: 'flex',
-        flexDirection: "row"
+        flexDirection: "row",
+        padding: 20
     },
     TextInputData: {
         backgroundColor: "transparent",
