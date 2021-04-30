@@ -9,7 +9,7 @@ const PlaceModal = (props) => {
 
             <View style={{ width: "100%" }} >
 
-                <Image source={props.place.img} style={{ width: "100%", height: 300 }} />
+                <Image source={{ uri: props.place.img }} style={{ width: "100%", height: 300 }} />
                 <Text style={{ fontSize: 40, textAlign: 'center' }}>{props.place.value}</Text>
                 <View style={{ alignItems: "center" }}>
                     <TouchableOpacity

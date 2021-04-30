@@ -14,7 +14,7 @@ const TextSHower = ({ placeName, onItemPressed, image }) => {
                 flexDirection: "row"
 
             }} >
-                <Image source={image} style={{ height: 50, width: 50 }} />
+                <Image source={{ uri: image }} style={{ height: 50, width: 50 }} />
                 <Text style={{ paddingLeft: 10, fontSize: 20 }}>{placeName}</Text>
 
             </View>

@@ -14,6 +14,29 @@ const mapDispatchToProps = dispatch => {
 const SharePlaces = (props) => {
     const [inputData, setInputData] = useState('')
     const [image, setImage] = useState('')
+
+    const handleAddingPlace = () => {
+        if (inputData === "" || image === "") {
+            if (image === "") {
+                alert("pick an Image")
+            }
+        }
+        else {
+            props.setAddData(
+                [
+                    {
+                        key: Math.random().toString(),
+                        value: inputData,
+                        img: image
+                    }]);
+            setInputData("")
+            setImage("")
+            props.navigation.navigate("Find Places")
+        }
+
+
+    }
+
     return (
         <View>
             <PicImage image={image} setImage={setImage} />
@@ -25,18 +48,7 @@ const SharePlaces = (props) => {
                 <Button
                     title="add more Item"
                     onPress={() => {
-                        if (inputData !== "") {
-                            props.setAddData(
-                                [
-                                    {
-                                        key: Math.random().toString(),
-                                        value: inputData,
-                                        img: {
-                                            uri: 'https://w7.pngwing.com/pngs/625/18/png-transparent-brown-wooden-bedroom-furniture-set-art-bedside-tables-metal-furniture-couch-furniture-angle-furniture-drawer.png'
-                                        }
-                                    }]);
-                            setInputData("")
-                        }
+                        handleAddingPlace()
                     }} />
             </View>
         </View>
