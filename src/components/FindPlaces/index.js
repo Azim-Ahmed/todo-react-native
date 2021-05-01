@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import { setAddData, deletePlaceData } from '../../redux/actionCreator';
+import { loadPlaces, deletePlaceData } from '../../redux/actionCreator';
 import FlatListSection from '../FlatListSection';
 
 import PlaceModal from '../PlaceModal';
@@ -16,10 +16,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         // setAddData: data => dispatch(setAddData(data)),
-        deletePlaceData: key => dispatch(deletePlaceData(key))
+        deletePlaceData: key => dispatch(deletePlaceData(key)),
+        loadPlaces: () => dispatch(loadPlaces())
     }
 }
 const FindPlaces = (props) => {
+    useEffect(() => {
+        props.loadPlaces()
+    })
 
     // const [addData, setAddData] = useState([])
     const [selectedModal, setSelectedModal] = useState(null)
